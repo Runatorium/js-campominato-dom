@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: 0;
+    
+}
+
+body{
+    background-color: aqua;
+}
+
+#grid {
+    padding-top: 50px;
+    width: 900px;
+    height: 800px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square {
+    width: calc(100% / 11);
+    height: calc(100% / 11);
+    border: solid 2px #7e89ff;
+    padding: 2px;
+}
+
+
+.square81 {
+    width: calc(100% / 9);
+    height: calc(100% / 11);
+    border: solid 2px #7e89ff;
+    padding: 2px;
+}
+
+
+
+.square49 {
+    width: calc(100% /7);
+    height: calc(100% / 11);
+    border: solid 2px #7e89ff;
+    padding: 2px;
+}
+
+.square.clicked {
+    background-color: indianred;
+}
