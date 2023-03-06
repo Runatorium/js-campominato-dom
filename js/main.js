@@ -3,12 +3,13 @@ const btnDom = document.getElementById('action-button')
 
 let bombnumbers = [];
 let score = 0;
+let nsquare;
 
 btnDom.addEventListener('click', function(){
 
     const difficoltà = document.getElementById('selezione-difficolta');
     const dfc = difficoltà.value;
-    var nsquare;
+    
 
     switch(dfc){
         case 'easy':
@@ -27,7 +28,7 @@ btnDom.addEventListener('click', function(){
          
     gridDom.innerHTML = "";
     creagriglia(nsquare);
-    bombgenerator();
+    bombgenerator(nsquare);
     console.log(bombnumbers);
    
 });
@@ -51,19 +52,24 @@ function creagriglia (nsquare){
                 let punteggio = document.getElementById('score');
                 punteggio.innerHTML ="";
 
-                if(bombnumbers.includes(quadratocorrente.value)){
+                if(score == (nsquare - 17)){
+                    let victory = document.getElementById('victorymessage');
+                    victory.innerHTML = 'Hai vinto';
+                    punteggio.append(score); 
+                }
+                else if(bombnumbers.includes(quadratocorrente.value)){
                     this.classList.add('boom');
                     console.log('sei finito su una mina');
                     let perso = document.getElementById('mina')
-                    perso.append('hai perso ');
+                    perso.innerHTML = 'hai perso ';
                     punteggio.append(score);
-                }else{
+                }
+                 else if (!bombnumbers.includes(quadratocorrente.value)){
                     this.classList.toggle('clicked');
                     console.log(quadratocorrente.innerHTML);
                     score++
                     punteggio.append(score);
-                    victory(score);
-                }           
+                }         
          });
         gridDom.append(quadratocorrente);
         quadratocorrente.append(i);
@@ -73,9 +79,9 @@ function creagriglia (nsquare){
 
 
 
-function bombgenerator(){
+function bombgenerator(nsquare){
     do {
-        const bmbnumber = Math.floor((Math.random() * 100) + 1);
+        const bmbnumber = Math.floor((Math.random() * nsquare) + 1);
         
         if (!bombnumbers.includes(bmbnumber)) {
             bombnumbers.push(bmbnumber);
@@ -85,11 +91,3 @@ function bombgenerator(){
     
 };
 
-
-
-function victory (score){
-    let victory = document.getElementById('victorymessage');
-    if(score == 84){
-        victory.append('Hai vinto');
-    }
-}
