@@ -49,3 +49,7 @@ body{
 .boom{
     background-color: indianred;
 }
+#messages{
+    display: flex;
+    justify-content: space-between;
+}

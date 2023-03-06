@@ -1,6 +1,5 @@
 const gridDom = document.getElementById('grid');
 const btnDom = document.getElementById('action-button')
-
 let bombnumbers = [];
 let score = 0;
 let nsquare;
@@ -36,9 +35,22 @@ btnDom.addEventListener('click', function(){
 
     
 function creanuovoquadrato(){
-    const currentElement = document.createElement('div');
-    currentElement.classList.add('square');
-    return currentElement;
+
+   if(nsquare = 100) {
+        const currentElement = document.createElement('div');
+        currentElement.classList.add('square');
+        return currentElement;
+
+    }if(nsquare = 81){
+        const currentElement = document.createElement('div');
+        currentElement.classList.add('square81');
+        return currentElement;
+
+    }if(nsquare = 49){
+        const currentElement = document.createElement('div');
+        currentElement.classList.add('square49');
+        return currentElement;
+    }
 }
 
 
@@ -47,7 +59,7 @@ function creagriglia (nsquare){
         const quadratocorrente = creanuovoquadrato();
         quadratocorrente.value=i;
         
-            quadratocorrente.addEventListener('click', function() {
+            quadratocorrente.addEventListener('click', function prova() {
 
                 let punteggio = document.getElementById('score');
                 punteggio.innerHTML ="";
@@ -80,14 +92,16 @@ function creagriglia (nsquare){
 
 
 function bombgenerator(nsquare){
-    do {
-        const bmbnumber = Math.floor((Math.random() * nsquare) + 1);
+    if(bombnumbers.length != 16){
+        do {
+            const bmbnumber = Math.floor((Math.random() * nsquare));
+            
+            if (!bombnumbers.includes(bmbnumber)) {
+                bombnumbers.push(bmbnumber);
+            }
         
-        if (!bombnumbers.includes(bmbnumber)) {
-            bombnumbers.push(bmbnumber);
-        }
-    
-    } while (bombnumbers.length < 16);
+        } while (bombnumbers.length < 16);
+    }
     
 };
 
