@@ -1,5 +1,6 @@
 const gridDom = document.getElementById('grid');
 const btnDom = document.getElementById('action-button')
+
 let bombnumbers = [];
 
 btnDom.addEventListener('click', function(){
@@ -44,7 +45,7 @@ function creagriglia (nsquare){
         const quadratocorrente = creanuovoquadrato();
         
             quadratocorrente.addEventListener('click', function() {
-                
+
                 this.classList.toggle('clicked');
                 console.log(quadratocorrente.innerHTML);  
         });
@@ -56,22 +57,18 @@ function creagriglia (nsquare){
 }; 
 
 
+
 function bombgenerator(){
-    for(i=0; i<16; i++){
-      let bmbnumber = Math.floor(Math.random() * 100 + 1);
-      if(bmbnumber != bombnumbers[i-1]){
-        bombnumbers[i]=bmbnumber
-      }
-    } 
-}
+    do {
+        const bmbnumber = Math.floor((Math.random() * 100) + 1);
+        
+        if (!bombnumbers.includes(bmbnumber)) {
+            bombnumbers.push(bmbnumber);
+        }
+    
+    } while (bombnumbers.length < 16);
+    
+};
 
 
-/*
-for(i=0; i<16; i++){
-    if(this.value == bombnumbers[i]){
-        console.log(explosion);
-    }else if(this.value !== bombnumbers[16]){
-        this.classList.toggle('clicked');
-    }
-}
-*/
+
