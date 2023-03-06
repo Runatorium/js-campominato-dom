@@ -29,34 +29,12 @@ btnDom.addEventListener('click', function(){
     creagriglia(nsquare);
     bombgenerator(nsquare);
     console.log(bombnumbers);
-   
 });
     
 
-    
-function creanuovoquadrato(){
-
-   if(nsquare = 100) {
-        const currentElement = document.createElement('div');
-        currentElement.classList.add('square');
-        return currentElement;
-
-    }if(nsquare = 81){
-        const currentElement = document.createElement('div');
-        currentElement.classList.add('square81');
-        return currentElement;
-
-    }if(nsquare = 49){
-        const currentElement = document.createElement('div');
-        currentElement.classList.add('square49');
-        return currentElement;
-    }
-}
-
-
 function creagriglia (nsquare){
     for(i=0; i < nsquare; i++){
-        const quadratocorrente = creanuovoquadrato();
+        const quadratocorrente = creanuovoquadrato(nsquare);
         quadratocorrente.value=i;
         
             quadratocorrente.addEventListener('click', function prova() {
@@ -90,7 +68,6 @@ function creagriglia (nsquare){
 }; 
 
 
-
 function bombgenerator(nsquare){
     if(bombnumbers.length != 16){
         do {
@@ -105,3 +82,21 @@ function bombgenerator(nsquare){
     
 };
 
+function creanuovoquadrato(nsquare){
+
+    if(nsquare = 100) {
+         const currentElement = document.createElement('div');
+         currentElement.classList.add('square');
+         return currentElement;
+ 
+     }if(nsquare = 81){
+         const currentElement = document.createElement('div');
+         currentElement.classList.add('square81');
+         return currentElement;
+ 
+     }if(nsquare = 49){
+         const currentElement = document.createElement('div');
+         currentElement.classList.add('square49');
+         return currentElement;
+     }
+ }
