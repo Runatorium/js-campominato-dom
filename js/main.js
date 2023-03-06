@@ -43,13 +43,17 @@ function creanuovoquadrato(){
 function creagriglia (nsquare){
     for(i=0; i < nsquare; i++){
         const quadratocorrente = creanuovoquadrato();
+        quadratocorrente.value=i;
         
             quadratocorrente.addEventListener('click', function() {
-
-                this.classList.toggle('clicked');
-                console.log(quadratocorrente.innerHTML);  
-        });
-
+                if(bombnumbers.includes(quadratocorrente.value)){
+                    this.classList.add('boom');
+                    console.log('sei finito su una mina');
+                }else{
+                    this.classList.toggle('clicked');
+                    console.log(quadratocorrente.innerHTML);
+                }           
+         });
         gridDom.append(quadratocorrente);
         quadratocorrente.append(i);
             

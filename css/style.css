@@ -43,5 +43,9 @@ body{
 }
 
 .square.clicked {
+    background-color: rgb(49, 2, 218);
+}
+
+.boom{
     background-color: indianred;
 }
